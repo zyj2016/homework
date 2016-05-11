@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            background-color:#ccc;
+        }
+
+        th,td {
+            background-color:#fff;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <table>
+        <tr>
+            <th><input id="all" type="checkbox"></th>
+            <th>111</th>
+            <th>222</th>
+            <th>333</th>
+        </tr>
+        <tr>
+            <td><input name=che type="checkbox"></td>
+            <td>111</td>
+            <td>222</td>
+            <td>333</td>
+        </tr>
+        <tr>
+            <td><input name=che type="checkbox"></td>
+            <td>111</td>
+            <td>222</td>
+            <td>333</td>
+        </tr>
+        <tr>
+            <td><input name=che type="checkbox"></td>
+            <td>111</td>
+            <td>222</td>
+            <td>333</td>
+        </tr>      
+    </table>
+
+
+    <script>
+        
+        function checked() {
+
+            var all=document.getElementById('all'),//dom对象
+                ches=document.getElementsByName('che'),//dom对象的集合，类数组
+                len=ches.length,
+                i,
+                j,
+                k;
+                
+
+            all.onclick = function() {
+
+                
+
+
+
+
+                for(i=0;i<len;i++) {
+                    ches[i].checked='checked';
+                }  
+                // alert(222) ;
+            }
+
+            for (j=0;j<len;j++) {
+                ches[j].onclick = function() {
+                    if (this.checked) {
+                        this.parentNode.parentNode.style.backgroundColor='yellow';
+                    }
+                }
+                
+            }
+
+            }
+
+            
+
+        checked();
+
+
+
+    </script>
+</body>
+</html>
