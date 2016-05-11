@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+</head>
+<body>
+
+
+    <script>
+
+        //title两个标题提示
+        
+        // var title=document.title;
+        // console.log(title);
+        /*var x=true;
+        setInterval(function() {
+            // var x=true;
+            if (x) {
+                document.title='222222';
+            } else {
+                document.title='111111';
+            }
+            x=!x;
+        },500);*/
+
+
+        //title三个标题提示
+        var i=2;
+        var timer=setInterval(function() {
+            i++;            
+            if (i%3==0) {
+                document.title='111111';
+            } else if  (i%3==1) {
+                document.title='222222';
+            } else if (i%3==2){
+                document.title='333333';
+            }
+        },500);
+
+        // clearInterval(timer);
+
+    </script>
+</body>
+</html>
