@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+        .aaa {
+            margin:15px 0 0 88px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        你的爱好：
+        <input type="text">
+        <!-- <span id="addBtn">增加</span> -->
+        <button id="addBtn">增加</button>
+    </div>
+
+    <div class="aaa" id="delwp">
+        <!-- <p>
+            <input type="text">
+            <button>删除</button>
+        </p> -->
+        
+    </div>
+
+    <button class="aaa" id="sureBtn">确定</button>
+    <!-- <div class="aaa" id="sureBtn">确定</div> -->
+
+    <div class="aaa" id="total"></div>
+
+    <script>
+
+        var addBtn=document.getElementById('addBtn');
+        var delwp=document.getElementById('delwp');
+        var sureBtn=document.getElementById('sureBtn');
+        var total=document.getElementById('total');
+
+
+
+
+        addBtn.onclick=function() {
+            var p=document.createElement('p');
+            var input=document.createElement('input');
+            input.type='text';
+            var button=document.createElement('button');
+            var txt=document.createTextNode('删除');
+            delwp.appendChild(p);
+            button.appendChild(txt);
+            p.appendChild(input);
+            p.appendChild(button);
+
+
+
+            
+
+            var btns=delwp.getElementsByTagName('button');//类数组
+
+
+
+            for (var i=0;i<btns.length;i++) {
+                btns[i].onclick=function() {
+                    confirm('确定要删除吗？');
+                    if (true) {
+                        delwp.removeChild(this.parentNode);
+                        // delwp.removeChild(p);??
+                        // this.parentNode.parentNode.removeChild(p);??
+                        addBtn.disabled='';
+                    }
+
+                };
+            }
+
+            if (btns.length>=4) {
+                addBtn.disabled='disabled';
+            }
+
+
+            var arr=[];
+            sureBtn.onclick=function() {
+                inps=delwp.getElementsByTagName('input');//类数组
+               
+                for (var j=0;j<inps.length;j++) {
+                    arr.push(inps[j].value);
+                    // console.log(arr);
+                }
+
+                arr.unshift(addBtn.value);
+                // console.log(arr)
+                total.innerHTML='你的爱好有' + ':' + arr.join('-'); 
+            };
+
+
+        };
+
+
+    </script>
+</body>
+</html>
