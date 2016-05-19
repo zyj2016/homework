@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+        .tab-slider {
+            width: 400px;
+            height: 230px;
+            border:1px solid #aaa;
+            overflow:hidden;
+            margin:80px auto;
+            position:relative;
+            cursor:pointer;
+        }
+
+        .tab-slider ul li {
+            width: 400px;
+            height: 230px;
+            float:left;
+        }
+
+        .tab-slider ol {
+            /*width: 80px;*/
+            /*height: 20px;*/
+            background-color:red;
+            opacity:0.5;
+            filter:alpha(opacity=50);
+            position:absolute;
+            bottom: 12px;
+            left: 50%;
+            margin-left: -40px;
+            /*margin-left: 140px;*/
+            overflow:hidden;
+            border-radius:7px;
+        }
+
+        .tab-slider ol li {
+            width: 10px;
+            height: 10px;
+            border-radius:50%;
+            background-color:#fff;
+            float:left;
+            margin:2px 5px;
+            cursor:pointer;
+        }
+
+        .tab-slider ol li.on {
+            background-color:blue;
+        }
+
+        .tab-slider a {
+            position:absolute;
+            top:50%;
+            margin-top:-18px;
+            width: 36px;
+            height: 36px;
+            background-color:#333;
+            opacity:0.5;
+            filter:alpha(opacity=50);
+        }
+
+        .tab-slider a.prev {
+            left:0;
+        }
+
+        .tab-slider a.next {
+            right:0;
+        }
+
+    </style>
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $slider = $('.tab-slider'),
+                $ol = $slider.find('ol'),
+                //$ol = $slider.children('ol')
+                $ul = $slider.find('ul'),
+                len = $ul.find('li').length,
+                width = $ul.find('li').width(),
+                ulWidth = len*width,
+                timer,
+                arr=['<li class="on"></li>'];
+                // console.log(ulWidth);
+            $ul.width(ulWidth);
+            // console.log(arr)
+            for (var i=0;i<len-1;i++) {
+                arr.push('<li></li>');
+            }
+            // console.log(arr)
+            $ol[0].innerHTML = arr.join('');
+
+            $ol.find('li').on('click',function() {
+                // alert(0)
+                var $this = $(this),
+                    index = $this.index();
+                $this.addClass('on').siblings('.on').removeClass('on');
+                $ul.animate({marginLeft:-index*width},500,function() {
+                    //TODO
+                })
+            });
+
+            $slider.find('a').on('click',function() {
+                var $this = $(this),
+                    currIndex = $ol.find('li.on').index();
+                // console.log(currIndex)
+                
+                if ( $('ul:animated').length > 0 ) {
+                    return;
+                }
+
+
+                if ($this.hasClass('next')) {
+                    currIndex++;
+                    currIndex = (currIndex>=len)?0:currIndex;
+
+                    // if (currIndex>=len) {
+                    //     currIndex = 0;
+                    // }
+                } else {
+                    currIndex--;
+                    currIndex = (currIndex<0)?(len-1):currIndex;
+                    // if (currIndex<0) {
+                    //     currIndex = len-1;
+                    // }
+                }
+
+                $ol.find('li').eq(currIndex).trigger('click');
+            });
+
+            function runner() {
+                timer = setInterval(function() {
+                    $slider.find('a.next').trigger('click');
+                },2000);
+            }
+            runner();
+            
+
+            $slider
+                .on('mouseover',function() {
+                    clearInterval(timer);
+                })
+                .on('mouseout',function() {
+                    runner();
+                })
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <div class="tab-slider">
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+            <li>item5</li>
+            <li>item6</li>
+        </ul>
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+        <ol>
+            <!-- <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+        </ol>
+    </div>
+    
+</body>
+</html>
