@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+        .wp {
+            width: 500px;
+            height: 300px;
+            border:1px solid #000;
+            margin:0 auto;
+        }
+
+        ul,li {
+            list-style:none;
+        }
+
+        li {
+            width: 80px;
+            height: 30px;
+            background-color:#cf4c46;
+            line-height:30px;
+            text-align:center;
+            margin-left:5px;
+        }
+
+        .active {
+            background-color:red;
+            color:#fff;
+        }
+
+        .header {
+            display:-webkit-box;
+        }
+
+        #tab-body>div {
+            width: 500px;
+            height: 270px;
+            display:none;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="wp">
+        <ul class="header" id="tab-header">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+            <li>tab5</li>
+        </ul>
+        <div id="tab-body">
+            <div>11111111</div>
+            <div>22222222</div>
+            <div>33333333</div>
+            <div>44444444</div>
+            <div>55555555</div>
+        </div>
+    </div> 
+
+    <script>
+         /*var div1=document.getElementById('div1');
+         div1.setAttribute('class','active');//设置属性，自定义属性
+         var index=div1.getAttribute('class');
+         div1.removeAttribute('class');*/
+
+        function gettab() {
+            var tabheader=document.getElementById('tab-header'),
+                tabbody=document.getElementById('tab-body'),
+                // lis=tabheader.children,
+                lis=tabheader.getElementsByTagName('li'),
+                // divs=tabbody.children,
+                divs=tabbody.getElementsByTagName('div'),
+                len=lis.length,
+                i,
+                j;
+
+                for (i=0;i<len;i++) {
+                    lis[i].setAttribute('index',i);
+                    //给每一个li设置一个自定义属性
+                    //得到这个属性
+                    lis[i].onclick=function() {
+
+                        var ind=this.getAttribute('index');//????
+                        //得到被点击li的属性
+                        //console.log(ind);0,1,2,3,4
+                        for (j=0;j<len;j++) {
+
+                            lis[j].removeAttribute('class');
+                            divs[j].style.display='none';
+                        }
+                        // lis[ind].setAttribute('class','active');
+                        this.className='active';
+                        divs[ind].style.display='block';
+                    };
+                }
+        };
+
+        gettab();
+
+
+    </script>
+</body>
+</html>
