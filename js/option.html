@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /*select {
+            width: 100px;
+        }*/
+    </style>
+</head>
+<body>
+    <!-- <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <select name="" id="">行内块
+        
+        <option value="">111</option>
+        <option value="">222</option>
+    </select> -->
+    <select name="" id="sel">
+        <option value="0">请选择</option>
+    </select>
+    <button id="myBtn">生成</button>
+    <script>
+
+    //方法一
+        // var myBtn=document.getElementById('myBtn'),
+        //     sel=document.getElementById('sel'),
+        //     arr=['北京','天津','杭州','深圳','上海','三亚'],
+        //     // str= <option value="0">请选择</option>,
+        //     // str='',
+        //     len=arr.length,
+        //     i;
+
+
+
+        // myBtn.onclick=function() {
+        //     // var str='';
+        //     var str= '<option value="0">请选择</option>';
+
+
+        //     for (i=0;i<len;i++) {
+        //         str += '<option value="'+(i+1)+'">'+arr[i]+'</option>';
+        //         //字符串是不可变长度的
+        //     }
+        //     console.log(str);
+        //     sel.innerHTML=str;
+        // };
+
+    //方法二
+    
+    var myBtn=document.getElementById('myBtn'),
+        sel=document.getElementById('sel'),
+        arr=['北京','天津','杭州','深圳','上海','三亚'],
+        len=arr.length,
+        i;
+
+        myBtn.onclick=function() {
+            var arr2=['<option value="0">请选择</option>'];
+            // console.log(arr2)
+            for (i=0;i<len;i++) {
+                arr2.push('<option value="'+(i+1)+'">'+arr[i]+'</option>');
+                
+            }
+            sel.innerHTML=arr2.join('');
+            // console.log(arr2.join(''));
+
+        };
+
+
+
+        //方法三underscore
+
+
+
+
+    </script>
+</body>
+</html>
