@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    span {
+        display:inline-block;
+        width: 15px;
+        height: 15px;
+        line-height:15px;
+        text-align:center;
+    }
+
+    </style>
+</head>
+<body>
+    
+
+    <script>
+
+    function pyramid(num) {
+        for (var i=0;i<num;i++) {
+            for (var k=0;k<(num-i-1);k++) {
+                document.write('<span>'+'</span>');
+            }
+
+
+            for (var j=0;j<(2*i+1);j++) {
+                document.write('<span>'+'*'+'</span>');
+            }
+            document.write('<br>');
+        }
+    }
+
+    pyramid(8);
+        
+    </script>
+</body>
+</html>
