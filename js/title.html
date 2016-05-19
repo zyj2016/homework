@@ -6,39 +6,66 @@
 </head>
 <body>
 
-
     <script>
+    //动态显示标题1
+        /*var title=document.title;
+            // var flag=true;
 
-        //title两个标题提示
-        
-        // var title=document.title;
-        // console.log(title);
-        /*var x=true;
-        setInterval(function() {
-            // var x=true;
-            if (x) {
-                document.title='222222';
-            } else {
-                document.title='111111';
-            }
-            x=!x;
-        },500);*/
+        var dynaTitle=function() {
+            var flag=true;
+            setInterval(function() {                
+                if (flag) {
+                    document.title=222;
+                } else {
+                    document.title=111;
+                }
+
+                flag=!flag;
+            },1000);
+        };
+
+        dynaTitle();*/
+
+    //动态显示标题2
+        var title=document.title;
+
+        var dynaTitle1=function() {
+            var i=0;
+            setInterval(function() {
+
+                // if (i%3==0) {
+                //     document.title=111;
+                // } else if (i%3==1) {
+                //     document.title=222;
+                // } else if (i%3==2) {
+                //     document.title=333;
+                // } 
+
+                if (i%4==0) {
+                    document.title=111;
+                } else if (i%4==1) {
+                    document.title=222;
+                } else if (i%4==2) {
+                    document.title=333;
+                } else if (i%4==3) {
+                    document.title=444;
+                }
+
+                i++;
+
+            },500);   
+        };
+
+        dynaTitle1();
 
 
-        //title三个标题提示
-        var i=2;
-        var timer=setInterval(function() {
-            i++;            
-            if (i%3==0) {
-                document.title='111111';
-            } else if  (i%3==1) {
-                document.title='222222';
-            } else if (i%3==2){
-                document.title='333333';
-            }
-        },500);
 
-        // clearInterval(timer);
+
+
+
+
+
+
 
     </script>
 </body>
