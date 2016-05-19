@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        function getType(n) {
+            // console.log(666);
+            var f
+            f=typeof n;
+            if (f=='object') {
+                if (n instanceof Array) {
+                    f='array';
+                }
+                if (n==null) {
+                    f='null';
+                }
+            }
+            return f;
+        }
+
+        // var r=getType(3);
+        // var r=getType('3');
+        // var r=getType(undefined);
+        // var r=getType(true);
+        // var r=getType(false);
+        // var r=getType([]);
+        // var r=getType({});
+        var r=getType(null);
+        console.log(r);
+
+    </script>
+</body>
+</html>
