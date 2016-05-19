@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>滑动停靠菜单</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style> 
+
+        .sideMenu {
+            width: 80px;
+            height: 120px;
+            background-color:red;
+            opacity:0.5;
+            position:fixed;
+            right:-80px;
+            top:50%;
+            margin-top:-60px;
+        }
+
+        .sideMenu .trigger {
+            width: 30px;
+            height: 30px;
+            background-color:blue;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            left: -30px;
+        }
+
+    </style>
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $trigger = $('.trigger'),
+                $sideMenu = $('.sideMenu');
+            $trigger.on('click',function() {
+
+                // $sideMenu.toggleClass('r0');
+                if ($sideMenu.hasClass('r0')) {
+                    // $sideMenu.removeClass('r0');
+                    $sideMenu.animate({right:-80},500).removeClass('r0');
+                } else {
+                    // $sideMenu.addClass('r0');
+                    $sideMenu.animate({right:0},500).addClass('r0');
+                }
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+        <div class="sideMenu">
+            <div class="trigger"></div>
+        </div>
+    
+</body>
+</html>
