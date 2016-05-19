@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .ph-wp {
+            position:relative;
+            display:inline-block;
+        }
+
+        .ph-wp .ph {
+            position:absolute;
+            top:3px;
+            top:4px\0;
+            left:2px;
+            right:0;
+            bottom:0;
+            font-size:13px;
+            color:#ccc;
+            z-index
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <span class="ph-wp">
+            <span class="ph"></span>
+            <input type="text" placeholder="请输入用户名">
+        </span>
+    </div>
+    
+    <script>
+
+
+
+
+
+        function phFix() {
+            var inps=document.getElementsByTagName('input'),
+                input=document.createElement('input'),
+                len=inps.length,
+                i,
+                j;
+
+            if ('placeholder' in input) {
+                for (j=0;j<len;j++) {
+                    // inps[j].style.zIndex=9;
+                    inps[j].parentNode.getElementsByTagName('span')[0].style.display='none';
+                    // inps[j].parentNode.style.display='none';
+                }
+                return;
+            }
+
+            for (i=0;i<len;i++) {
+                phSpan=inps[i].parentNode.getElementsByTagName('span')[0];
+                inpTxt=inps[i].getAttribute('placeholder');
+                phSpan.innerHTML=inpTxt;
+
+                phSpan.onclick = function() {
+                    this.parentNode.getElementsByTagName('input')[0].focus();
+                };
+
+                inps[i].onkeyup = function() {
+                    if (this.value.length) {
+                        this.parentNode.getElementsByTagName('span')[0].style.display='none';
+                    } else {
+                        this.parentNode.getElementsByTagName('span')[0].style.display='block';
+                    }
+                };
+            }
+            
+
+
+
+        }
+
+        phFix();
+    </script>
+</body>
+</html>
