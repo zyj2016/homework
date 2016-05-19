@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .clock {
+            width: 500px;
+            height: 200px;
+            line-height:200px;
+            border:2px solid #aaa;
+            font-size:50px;
+            text-align:center;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1" class="clock">00:00:00</div>
+
+    <script>
+
+        var div=document.getElementById('div1');
+
+        
+
+
+        var getClock=function() {
+            var now=new Date();
+            // var TimeStr=now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();           
+            // div.innerHTML=TimeStr;
+            setInterval(function() {
+                var TimeArr=[zero(now.getHours()),zero(now.getMinutes()),zero(now.getSeconds())];
+                div.innerHTML=TimeArr.join(':');
+            },1000);
+
+        };
+
+        function zero(n) {
+            if (n<10) {
+                return '0'+n;
+            } else {
+                return n;
+            }
+        }
+
+
+        getClock();
+    </script>
+</body>
+</html>
