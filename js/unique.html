@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+    //数组去重方法一，新建空对象，空数组，利用对象的属性名不能重复的特点，给属性赋值时自动去重。
+      /*var arr=[1,3,6,3,6,'a','b','a'];
+        function unique1() {
+            var obj={},
+            len=arr.length,
+            arr2=[],
+            i;
+
+        for (i=0;i<len;i++) {
+            obj[arr[i]]=0; //属性名为数字？？？？ 
+        }
+        //正确做法，但是会把所有的变成字符串
+        for (var index in obj) {
+            // console.log(index);
+            arr2.push(index);
+        }
+        //做法；字符串不变，数字变成数字????
+        // for (var index in obj) {
+        //     if () {
+
+        //     }
+        // }
+
+        return arr2
+            
+        }
+
+        var r=unique1();
+        console.log(r);*/
+
+    //数组去重方法二，新建空数组，判断原数组中的项是否在新数组中，不在就算push进去，单独写一个判断函数。
+    var arr=[1,3,6,3,6,'a','b','a','3',9,10];
+
+    function unique2() {
+        var arr2=[],
+            len=arr.length,
+            i;
+        for (i=0;i<len;i++) {
+            if (InArray(arr[i],arr2)) {
+                arr2.push(arr[i]);
+            }
+        }
+        return arr2;
+    }
+
+    function InArray(item,arr) {
+        for (var i=0;i<arr.length;i++) {
+            if (arr[i]===item) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    var r=unique2();
+    console.log(r);
+
+
+    //数组去重方法三 indexOf，判断一个字符串是否在另一个字符串中，数组也可以用，但是有浏览器兼容性问题。IE8及以下不支持。
+    
+    /*var arr=[1,3,6,3,6,'a','b','a'];
+    function unique3() {
+        var arr2=[],
+            len=arr.length,
+            i;
+        for (i=0;i<len;i++) {
+            if (arr2.indexOf(arr[i])==-1) {
+                arr2.push(arr[i]);
+            }
+        }
+
+        return arr2;
+    }
+
+    var r=unique3();
+    console.log(r);*/
+
+
+    //数组去重方法四,数组的splice方法。
+
+    // var arr=[1,3,1,undefined,1,1,3,3,'1'];
+    // var arr=[3,3,undefined,3,3];
+    // var arr=[1,1,1,3,3,3,3,3,3,3];
+
+
+    // function unique4(arr) {
+
+    //     var i,j;
+
+    //     for (i=0;i<arr.length;i++) {
+    //         for(j=i+1;j<arr.length;j++) {
+    //             if (arr[i]===arr[j]) {
+    //                 arr.splice(j,1);
+    //                 j--;//
+    //             }
+    //         }
+    //     }
+
+    //     return arr;
+    // }
+
+    // var r=unique4(arr);
+    // console.log(r);
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
