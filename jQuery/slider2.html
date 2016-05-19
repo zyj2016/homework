@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片滑动切换</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+
+        body {
+            background-color:#ccc;
+        }
+        .slider {
+            width: 500px;
+            height: 300px;
+            margin:50px auto;
+            overflow:hidden;
+            background-color:#fff;
+            position:relative;
+            font-size:30px;
+        }
+
+        .slider>ul li {
+            width: 500px;
+            height: 300px;
+            float:left;
+        }
+
+        .slider a {
+            position:absolute;
+            width: 40px;
+            height: 40px;
+            top:50%;
+            left:0;
+            margin-top:-20px;
+            background-color:#333;
+            opacity:0.5;
+            filter:alpha(opacity=50);
+        }
+
+        .slider a.next {
+            left:auto;
+            right:0;
+        }
+    </style>
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $ul = $('.slider ul'),
+                len = $ul.find('li').length,
+                width = $ul.find('li').width(),
+                ulWidth = len*width;
+            $ul.width(ulWidth);//设置ul的宽度
+
+            
+
+            $ul.parent().find('a').on('click',function() {
+                var $this = $(this);
+
+                if ( $('ul:animated').length>0 ) {
+                    return
+                }
+
+                if($this.hasClass('next')) {//next
+                    $ul.animate({marginLeft:-width},500,function() {
+                        $ul.append($ul.find('li:first'));
+                        $ul.css('margin-left','0');
+                    });
+                } else {//prev
+                    $ul.prepend($ul.find('li:last'));
+                    $ul.css('margin-left',-width);
+                    $ul.animate({'margin-left':'0'},500);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="slider">
+        <ul>
+            <li>item1item1item1item1iteitem1item1</li>
+            <li>item2item2item2item2item2item2em2</li>
+            <li>item3item3item3item3item3item3em3</li>
+            <li>item4item4item4item4item4item4it4</li>
+            <li>item5item5item5item5item5item5it5</li>
+            <li>item6item6item6item6item6item6it6</li>
+        </ul>
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+    </div>
+    
+</body>
+</html>
