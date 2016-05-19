@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴菜单</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+        body {
+            background-color:#2D2C41;
+        }
+
+        .wp {
+            width: 360px;
+            background-color:#fff;
+            margin:150px auto;
+            border-radius:5px;
+        }
+
+        h1 {
+            height: 45px;
+            border-bottom:1px solid #ccc;
+            cursor:pointer;
+            text-indent:15px;
+            position:relative;
+        }
+
+        h1.none {
+            border-bottom:none;
+        }
+
+        ul {
+            display:none;
+        }
+
+        li {
+            height: 46px;
+            background-color:#444359;
+            color:#fff;
+            border-bottom:1px solid #5B5B63;
+            line-height:46px;
+            text-indent:30px;
+        }
+
+        li:hover {
+            background-color:#B63B4D;
+        }
+
+        .red {
+            color:#B63B4D;
+        }
+
+        i {
+            width: 0;
+            height: 0;
+            display:block;
+            border-width:9px;
+            border-style:solid;
+            border-color:#2D2C41 transparent transparent transparent;
+            position:absolute;
+            right: 12px;
+            top: 19px;
+        }
+        /*after??????*/
+        /*小三角的做法？？？？？*/
+
+        i.inner {
+            border-color:#fff transparent transparent transparent;
+            position: absolute;
+            top: -13px;
+            right: -9px;
+        }
+
+    </style>
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $h1 = $('h1');
+            $h1.on('click',function() {
+                var $this = $(this);
+                // $this.siblings().toggle();
+                $this.siblings().slideToggle();
+                $this.parent().siblings().find('ul').hide();
+                // $this.addClass('red');
+                $this.toggleClass('red');
+                $this.parent().siblings().find('h1').removeClass('red');
+            })
+        });
+    </script>
+</head>
+<body>
+
+    <div class="wp">
+        <div class="item">
+            <h1>
+                web1
+                <i class="outer"><i class="inner"></i></i>
+            </h1>
+            <ul>
+                <li>Photo</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Maquetacion web</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1>web2</h1>
+            <ul>
+                <li>Photo</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Maquetacion web</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1>web3</h1>
+            <ul>
+                <li>Photo</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Maquetacion web</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="none">web4</h1>
+            <ul>
+                <li>Photo</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Maquetacion web</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>
