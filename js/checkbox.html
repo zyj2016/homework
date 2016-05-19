@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <th><input type="checkbox" id="all"></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>a1</td>
+            <td>男</td>
+            <td>22</td>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>a2</td>
+            <td>男</td>
+            <td>22</td>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>a3</td>
+            <td>男</td>
+            <td>22</td>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>a4</td>
+            <td>男</td>
+            <td>22</td>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>a5</td>
+            <td>男</td>
+            <td>22</td>
+        </tr>
+    </table>
+
+    <script>
+
+
+    function inticheckbox() {
+
+        var all=document.getElementById('all');
+        var chks=document.getElementsByName('chk');
+        var i,j,len=chks.length;
+
+        all.onclick=function() {
+
+            if (all.checked) {
+                for (i=0;i<len;i++) {
+                    chks[i].checked='checked';
+                    chks[i].parentNode.parentNode.style.backgroundColor='yellow';
+
+                } 
+            } else {
+                for (i=0;i<len;i++) {
+                    chks[i].checked='';
+                    chks[i].parentNode.parentNode.style.backgroundColor='#fff';
+                }             
+            };
+            // console.log(all.checked);
+            
+        };
+
+
+
+        for (j=0;j<len;j++) {
+             chks[j].onclick=function() {
+                if (this.checked) {
+                    this.parentNode.parentNode.style.backgroundColor='yellow';
+                } else {
+                    this.parentNode.parentNode.style.backgroundColor='#fff';
+                }
+
+                if (isAllChecked()) {
+                    all.checked='checked';
+                } else {
+                    all.checked='';
+                }
+             };                   
+        }
+
+        //????
+        function isAllChecked() {
+            for (var k=0;k<len;k++) {
+                if (!chks[k].checked) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+    }
+
+
+
+    inticheckbox();
+        
+
+    </script>
+</body>
+</html>
