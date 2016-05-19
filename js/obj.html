@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+        table {
+            background-color:#ce4c46;
+        }
+
+        th,td {
+            background-color:#fff;
+            /*text-align:center;*/
+            text-align:left;
+            text-indent:5px;
+        }
+
+        th {
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> -->
+        </tbody>
+    </table>
+
+
+
+    <script>
+    function intitable() {
+
+        var arr=[
+            {
+                name:'张三',
+                age:25,
+                gender:'男',
+                mobile:1500000000,
+                addess:'北京市'
+            },
+            {
+                name:'李雷',
+                age:20,
+                gender:'女',
+                mobile:1500000000,
+                addess:'朝阳区'
+            },
+            {
+                name:'韩梅梅',
+                age:23,
+                gender:'男',
+                mobile:1500000000,
+                addess:'昌平区'
+            },
+            {
+                name:'小花',
+                age:22,
+                gender:'男',
+                mobile:1500000000,
+                addess:'大兴区'
+            },
+            {
+                name:'李明',
+                age:26,
+                gender:'女',
+                mobile:1500000000,
+                addess:'通州区'
+            },
+            {
+                name:'zyj',
+                age:26,
+                gender:'女',
+                mobile:1500000000,
+                addess:'通州区'
+            }
+        ];
+
+        var tbody=document.getElementsByTagName('tbody')[0];
+        var len=arr.length,i,arr2=[];
+        for (i=0;i<len;i++) {
+            // console.log(arr[i])
+            arr2.push(
+                '<tr>'+
+                    '<td>'+arr[i].name+'</td>',
+                    '<td>'+arr[i].age+'</td>',
+                    '<td>'+arr[i].gender+'</td>',
+                    '<td>'+arr[i].mobile+'</td>',
+                    '<td>'+arr[i].addess+'</td>'
+                +'</tr>'
+            )
+        }
+        tbody.innerHTML=arr2.join('');
+        // console.log(arr2);
+        // console.log(arr2.join(''));
+        // console.log(tbody.innerHTML);
+
+
+    }
+    intitable();
+    </script>
+</body>
+</html>
