@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="red mt">
+        div1
+    </div>
+    <div class="red">div1</div>
+    <div class="blue">div1</div>
+    <div class="blue">div1</div>
+    <div class="blue">div1</div>
+    <div class="blue">div1</div>
+    <span class="red">div1</span>
+    <span class="blue">div1</span>
+    <span class="red">div1</span>
+    <span class="red">div1</span>
+
+    <script>
+        function cls(clsName) {
+            
+            var eles=document.getElementsByTagName('*');
+            var len=eles.length,
+                i,
+                eleArr=[];
+            for (i=0;i<len;i++) {
+                if (eles[i].className.indexOf(clsName)>-1) {
+                    eleArr.push(eles[i]);
+                } 
+            }
+            return eleArr;
+        }
+
+        cls();
+
+        function get() {
+            reds = cls('red');
+            for (var i=0;i<reds.length;i++) {
+                reds[i].style.backgroundColor='red';
+            }
+        }
+
+        get();
+    </script>
+</body>
+</html>
