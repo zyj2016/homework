@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+
+        .tab {
+            width: 680px;
+            height: 335px;
+            margin:50px auto;
+            border:1px solid #000;
+        }
+
+        .tab ul {
+            overflow:hidden;
+        }
+
+        .tab ul li {
+            float:left;
+            width: 100px;
+            height: 35px;
+            line-height:35px;
+            text-align:center;
+            border:1px solid #ce4c46;
+            margin-right:10px;
+            cursor:pointer;
+        }
+
+        .tab ul li.on {
+            background-color:#ce4c46;
+            color:#fff;
+        }
+        
+        .tab .item {
+            height: 300px;
+            overflow:hidden;
+        }
+
+        .tab .item>div {
+            height: 300px;
+            width: 680px;
+        }
+
+    </style>
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var $tab = $('.tab'),
+                $lis = $tab.find('ul>li'),
+                $divs = $tab.find('div>div');
+
+            $lis.on('click',function() {
+                var $this = $(this),
+                    index = $this.index();
+                $this.addClass('on').siblings('.on').removeClass('on');
+                // $this.parent().siblings().find('div')
+                $divs.eq(index).show().siblings().hide();
+                //eq()??????
+
+            })
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="tab">
+        <ul>
+            <li class="on">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+            <li>tab5</li>
+            <li>tab6</li>
+        </ul>
+        <div class="item">
+            <div>item1</div>
+            <div>item2</div>
+            <div>item3</div>
+            <div>item4</div>
+            <div>item5</div>
+            <div>item6</div>
+        </div>
+    </div>
+    
+</body>
+</html>
