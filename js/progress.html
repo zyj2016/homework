@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>  
+    <style>
+        .outer {
+            width: 200px;
+            height: 30px;
+            line-height:30px;
+            text-align:center;
+            border-radius:5px;
+            background-color:red;
+            position:relative;
+            cursor:pointer;
+        }
+
+        .inner {
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            width: 0px;
+            opacity:0.2;
+            /*filter:alpha(opacity=20);IE8*/
+            background-color:#000;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="outer" class="outer">
+        <div id="inner" class="inner"></div>
+        提交
+    </div>
+
+
+    <script>
+
+
+        var progress=function() {
+            var outer=document.getElementById('outer'),
+                inner=document.getElementById('inner'),
+                timer,
+                counter=0;
+            
+
+            outer.onclick=function() {
+
+                outer.disabled='disabled';
+                timer=setInterval(function() {
+                    counter++;
+                    inner.style.width=counter*10+'%';
+                    if (counter==10) {
+                        clearInterval(timer);
+                    }
+                },1000);
+            };
+
+
+        };
+
+        progress();
+
+        
+    </script>
+    
+</body>
+</html>
