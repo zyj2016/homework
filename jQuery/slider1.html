@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简单图片切换</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+        .slider {
+            width: 300px;
+            height: 200px;
+            margin:50px auto;
+            overflow:hidden;
+            position:relative;
+        }
+
+        .slider li {
+            width: 300px;
+            height: 200px;
+        }
+
+        .slider > a {
+            position:absolute;
+            left:0;
+            top:50%;
+            margin-top:-20px;
+            width: 40px;
+            height: 40px;
+            background-color:#333;
+            opacity:0.5;
+            filter:alpha(opacity:50);
+        }
+
+        .slider > a.next {
+            right:7px;
+            left:auto;
+        }
+
+    </style>
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $ul=$('.slider>ul');
+
+            $('.slider>a').on('click',function() {
+                var $this=$(this);
+                if ($this.hasClass('next')) {//next
+                    // console.log($ul.find('li:first'));
+                    $ul.append($ul.find('li:first'));
+                } else {//prev
+                    $ul.prepend($ul.find('li:last'));
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="slider">
+        <ul>
+            <li><a href=""><img src="../img/jzd.jpg" alt=""></a></li>
+            <li><a href=""><img src="../img/ld.jpg" alt=""></a></li>
+            <li><a href=""><img src="../img/lm.jpg" alt=""></a></li>
+            <li><a href=""><img src="../img/ls.jpg" alt=""></a></li>
+            <li><a href=""><img src="../img/ems.jpg" alt=""></a></li>
+            <li><a href=""><img src="../img/hs.jpg" alt=""></a></li>
+        </ul>
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+    </div>
+    
+</body>
+</html>
